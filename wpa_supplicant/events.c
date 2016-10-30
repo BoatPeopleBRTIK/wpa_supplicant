@@ -1364,16 +1364,14 @@ static int wpa_supplicant_need_to_roam(struct wpa_supplicant *wpa_s,
 
 	min_diff = 2;
 	if (current_bss->level < 0) {
-		if (current_bss->level < -85)
-			min_diff = 1;
-		else if (current_bss->level < -80)
-			min_diff = 2;
-		else if (current_bss->level < -75)
-			min_diff = 3;
-		else if (current_bss->level < -70)
+		if (current_bss->level < -75)
 			min_diff = 4;
+		else if (current_bss->level < -70)
+			min_diff = 6;
+		else if (current_bss->level < -65)
+			min_diff = 8;
 		else
-			min_diff = 5;
+			min_diff = 15;
 	}
 	if (abs(current_bss->level - selected->level) < min_diff) {
 		wpa_dbg(wpa_s, MSG_DEBUG, "Skip roam - too small difference "
