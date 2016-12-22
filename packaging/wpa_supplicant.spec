@@ -10,11 +10,6 @@ Version: 2.5
 Release: 20%{?dist}
 License: BSD
 Group: System Environment/Base
-Source1: build-config
-Source2: %{name}.conf
-Source3: %{name}.service
-Source4: %{name}.sysconfig
-Source6: %{name}.logrotate
 Source0: http://w1.fi/releases/%{name}-%{version}%{rcver}%{snapshot}.tar.gz
 
 %define build_gui 1
@@ -65,7 +60,7 @@ Graphical User Interface for wpa_supplicant written using QT
 
 %build
 pushd wpa_supplicant
-  cp %{SOURCE1} .config
+  cp ../conf/build-config .config
   CFLAGS="${CFLAGS:-%optflags} -fPIE -DPIE" ; export CFLAGS ;
   CXXFLAGS="${CXXFLAGS:-%optflags} -fPIE -DPIE" ; export CXXFLAGS ;
   LDFLAGS="${LDFLAGS:-%optflags} -pie -Wl,-z,now" ; export LDFLAGS ;
@@ -85,12 +80,12 @@ popd
 
 %install
 # init scripts
-install -D -m 0644 %{SOURCE3} %{buildroot}/%{_unitdir}/%{name}.service
-install -D -m 0644 %{SOURCE4} %{buildroot}/%{_sysconfdir}/sysconfig/%{name}
-install -D -m 0644 %{SOURCE6} %{buildroot}/%{_sysconfdir}/logrotate.d/%{name}
+install -D -m 0644 conf/%{name}.service %{buildroot}/%{_unitdir}/%{name}.service
+install -D -m 0644 conf/%{name}.sysconfig %{buildroot}/%{_sysconfdir}/sysconfig/%{name}
+install -D -m 0644 conf/%{name}.logrotate %{buildroot}/%{_sysconfdir}/logrotate.d/%{name}
 
 # config
-install -D -m 0600 %{SOURCE2} %{buildroot}/%{_sysconfdir}/%{name}/%{name}.conf
+install -D -m 0600 conf/%{name}.conf %{buildroot}/%{_sysconfdir}/%{name}/%{name}.conf
 
 # binary
 install -d %{buildroot}/%{_sbindir}
