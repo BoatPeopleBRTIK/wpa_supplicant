@@ -23,6 +23,7 @@ case "$1" in
 		if ! getent group netdev >/dev/null; then
 			addgroup --quiet --system netdev || true
 		fi
+		sed -i "s/ctrl_interface_group=.*/ctrl_interface_group=netdev/g" /etc/wpa_supplicant/wpa_supplicant.conf
 		;;
 	abort-upgrade|abort-deconfigure|abort-remove)
 		;;
