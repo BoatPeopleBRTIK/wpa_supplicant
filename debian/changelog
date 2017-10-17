@@ -1,3 +1,20 @@
+wpa (2.5-1) xenial; urgency=medium
+
+  * TDLS: Ignore incoming TDLS Setup Response retries
+  * FT: Do not allow multiple Reassociation Response frames
+  * WNM: Ignore WNM-Sleep Mode Response without pending request
+  * WNM: Ignore WNM-Sleep Mode Response if WNM-Sleep Mode has not been used
+  * WNM: Ignore Key Data in WNM Sleep Mode Response frame if no PMF in use
+  * TDLS: Reject TPK-TK reconfiguration
+  * Fix PTK rekeying to generate a new ANonce
+  * Prevent installation of an all-zero TK
+  * Fix TK configuration to the driver in EAPOL-Key 3/4 retry case
+  * Extend protection of GTK/IGTK reinstallation of WNM-Sleep Mode cases
+  * Prevent reinstallation of an already in-use group key
+  * hostapd: Avoid key reinstallation in FT handshake
+
+ -- Chanho Park <chanho61.park@samsung.com>  Tue, 17 Oct 2017 14:36:22 +0900
+
 wpa (2.5) unstable; urgency=medium
 
   * Update 2.5 release

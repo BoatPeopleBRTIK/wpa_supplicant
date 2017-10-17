@@ -7,7 +7,7 @@ Summary: WPA/WPA2/IEEE 802.1X Supplicant
 Name: wpa_supplicant
 Epoch: 1
 Version: 2.5
-Release: 20%{?dist}
+Release: 21%{?dist}
 License: BSD
 Group: System Environment/Base
 Source0: http://w1.fi/releases/%{name}-%{version}%{rcver}%{snapshot}.tar.gz
@@ -161,6 +161,9 @@ chmod -R 0644 %{name}/examples/*.py
 %endif
 
 %changelog
+* Tue Oct 17 2017 Chanho Park <chanho61.park@samsung.com> - 1:2.5-21
+- CVE: fix 4-way handshake protocol vulnerability
+
 * Fri Feb 05 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1:2.5-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
